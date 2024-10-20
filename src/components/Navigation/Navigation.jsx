@@ -8,8 +8,8 @@ const buildLinkClass = ({ isActive }) => {
 };
 
 const Navigation = () => (
-  <>
-    <nav className={css.nav}>
+  <header>
+    <section className={css.container}>
       <NavLink to="/" className={css.logo}>
         <svg className={css.logo}>
           <use href={`${sprite}#icon-logo`} />
@@ -23,8 +23,8 @@ const Navigation = () => (
           Catalog
         </NavLink>
       </div>
-    </nav>
-  </>
+    </section>
+  </header>
 );
 
 export default Navigation;

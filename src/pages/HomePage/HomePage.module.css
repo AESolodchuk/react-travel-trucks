@@ -1,14 +1,11 @@
-.container {
-  background-image: url("../../assets/homepagepic.jpg");
-  border: 1px solid #000;
-  background-size: cover;
-  text-align: left;
-}
-
-.wrapper {
+.homePage {
   display: flex;
   flex-direction: column;
   padding: 260px 64px;
+
+  background-image: url("../../assets/homepagepic.jpg");
+  background-size: cover;
+  text-align: left;
 }
 
 .header,
