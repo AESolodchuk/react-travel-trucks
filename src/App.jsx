@@ -1,14 +1,13 @@
 //#region Common import
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 //#endregion Common import
 
 //#region Pages
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const CamperPage = lazy(() => import("./pages/CamperPage/CamperPage"));
-const CatalogPage = lazy(() => "./pages/CatalogPage/CatalogPage");
-const NotFoundPage = lazy(() => "./pages/NotFoundPage/NotFoundPage");
+const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 //#endregion Pages
 
 //#region Components
@@ -19,18 +18,22 @@ const Features = lazy(() => import("./components/Features/Features"));
 
 //#region Application
 function App() {
-  <Suspense fallback="Loading...">
-    <Navigation />
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/catalog" element={<CatalogPage />} />
-      <Route path="catalog/:id" element={<CamperPage />}>
-        <Route path="Reviews" element={<Reviews />} />
-        <Route path="Features" element={<Features />} />
-      </Route>
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  </Suspense>;
+  return (
+    <>
+      <Suspense fallback="Loading...">
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="catalog/:id" element={<CamperPage />}>
+            <Route path="reviews" element={<Reviews />} />
+            <Route path="features" element={<Features />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </>
+  );
 }
 //#endregion Application
 

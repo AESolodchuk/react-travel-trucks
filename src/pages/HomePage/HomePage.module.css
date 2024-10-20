@@ -1,0 +1,59 @@
+.container {
+  background-image: url("../../assets/homepagepic.jpg");
+  border: 1px solid #000;
+  background-size: cover;
+  text-align: left;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 260px 64px;
+}
+
+.header,
+.text {
+  font-weight: 600;
+  color: var(--inputs);
+}
+
+.header {
+  font-size: 48px;
+  line-height: 0.67;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 24px;
+  line-height: 1.33;
+  margin-bottom: 40px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 173px;
+  border: none;
+  border-radius: 200px;
+  padding: 16px 47px;
+
+  background: var(--button);
+
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  transition: var(--basic-transition);
+}
+
+.button:hover {
+  background: var(--button-hover);
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi) {
+  .container {
+    background-image: url("../../assets/homepagepic@2x.jpg");
+  }
+}
