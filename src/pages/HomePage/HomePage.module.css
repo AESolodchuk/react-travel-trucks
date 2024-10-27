@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 260px 0;
 
-  background-image: url("../../assets/homepagepic.jpg");
+  background-image: url("/assets/homepagepic.jpg");
   background-size: cover;
   text-align: left;
 }
