@@ -1,11 +1,15 @@
-.homePage {
+.hero {
   display: flex;
   flex-direction: column;
-  padding: 260px 64px;
+  padding: 260px 0;
 
   background-image: url("../../assets/homepagepic.jpg");
   background-size: cover;
   text-align: left;
+}
+
+.container {
+  padding: 0 64px;
 }
 
 .header,
@@ -24,28 +28,6 @@
   font-size: 24px;
   line-height: 1.33;
   margin-bottom: 40px;
-}
-
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 173px;
-  border: none;
-  border-radius: 200px;
-  padding: 16px 47px;
-
-  background: var(--button);
-
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  color: var(--white);
-  transition: var(--basic-transition);
-}
-
-.button:hover {
-  background: var(--button-hover);
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),

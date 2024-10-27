@@ -16,3 +16,27 @@ export const fetchCampers = createAsyncThunk(
     }
   }
 );
+
+export const fetchCamper = createAsyncThunk(
+  "camper/fetchCamper",
+  async (camperId, thunkAPI) => {
+    try {
+      const { data } = await camperInstance.get(`/campers/${camperId}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const filterCamper = createAsyncThunk(
+  "camper/filterCamper",
+  async (filter, thunkAPI) => {
+    try {
+      const { data } = await camperInstance.get(`/campers?${filter}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -1,17 +1,17 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 export const selectCampers = (state) => state.campers.items;
+export const selectCamper = (state) => state.campers.item.id;
+export const selectReviews = (state) => state.campers.item.reviews;
+export const selectFeatures = (state) => state.campers.item.features;
+export const selectSpecifications = (state) =>
+  state.campers.item.specifications;
+
+export const selectIsLoading = (state) => state.campers.loading;
+export const selectError = (state) => state.campers.error;
+
+export const selectLocation = (state) => state.filters.location;
+export const selectVehicleEquipment = (state) => state.filters.vehicleEquipment;
+export const selectVehicleType = (state) => state.filters.vehicleType;
+
 export const selectFilter = "";
-
-export const selectIsLoading = (state) => state.contacts.loading;
-export const selectError = (state) => state.contacts.error;
-
-// export const selectFilteredTrucks = createSelector(
-//   [selectCampers],
-//   (contacts, filter) => {
-//     const normalizedFilter = filter.toLowerCase();
-//     return contacts.filter((contact) =>
-//       contact.name.toLowerCase().includes(normalizedFilter)
-//     );
-//   }
-// );

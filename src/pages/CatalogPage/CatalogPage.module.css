@@ -1,5 +1,29 @@
 .catalogPage {
+  padding: 48px 0 52px;
+}
+
+.container {
   display: flex;
   flex-direction: row;
-  padding: 48px 64px;
+  padding: 0 64px;
+  gap: 64px;
+}
+
+.filterList {
+  max-width: 360px;
+}
+
+.camperList {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+}
+
+.camperItem {
+  display: flex;
+  gap: 24px;
+
+  border: 1px solid var(--gray-light);
+  border-radius: 20px;
+  padding: 24px;
 }

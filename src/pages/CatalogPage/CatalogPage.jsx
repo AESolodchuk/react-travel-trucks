@@ -1,14 +1,21 @@
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campersOps";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCampers } from "../../redux/selectors";
+import {
+  selectCampers,
+  selectError,
+  selectIsLoading,
+} from "../../redux/selectors";
 import CatalogItem from "../../components/CatalogItem/CatalogItem";
+import Filters from "../../components/Filters/Filters";
 import css from "./CatalogPage.module.css";
 
 const CatalogPage = () => {
   // const trucks = useSelector(selectFilteredTrucks);
 
   const campers = useSelector(selectCampers);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
 
@@ -19,24 +26,25 @@ const CatalogPage = () => {
   return (
     <main>
       <section className={css.catalogPage}>
-        <div className={css.filterList}></div>
-        <ul className={css.list}>
-          {campers.map(
-            ({ id, name, price, reviews, location, description }) => {
-              return (
-                <li key={id} className={css.camperList}>
-                  <CatalogItem
-                    name={name}
-                    price={price}
-                    reviews={reviews}
-                    location={location}
-                    description={description}
-                  />
-                </li>
-              );
-            }
-          )}
-        </ul>
+        <div className={css.container}>
+          <div className={css.filterList}>
+            <Filters />
+          </div>
+          {isLoading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
+          <ul className={css.camperList}>
+            {campers.map((camper) => (
+              <li key={camper.id} className={css.camperItem}>
+                <CatalogItem
+                  camper={camper}
+                  features={Object.keys(camper).filter(
+                    (key) => camper[key] === true
+                  )}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </main>
   );

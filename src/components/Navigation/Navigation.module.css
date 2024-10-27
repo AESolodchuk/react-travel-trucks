@@ -1,4 +1,4 @@
-.container {
+.navigation {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -6,15 +6,22 @@
   padding: 24px 64px;
   gap: 450px;
   font-weight: 500;
-  font-size: 16px;
   background-color: var(--inputs);
   border-bottom: 1px solid var(--badges);
+  max-width: 1440px;
+}
+
+.wrapperlogo {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  width: 136px;
+  height: 16px;
 }
 
 .logo {
-  display: flex;
-  height: 16px;
   width: 136px;
+  height: 16px;
 }
 
 .link {
