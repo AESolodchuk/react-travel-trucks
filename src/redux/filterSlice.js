@@ -39,18 +39,6 @@ const filtersSlice = createSlice({
       };
       state.VehicleType = null;
     },
-
-    // setAll(state, { payload }) {
-    //   state.Location = payload.Location;
-    //   state.VehicleEquipment = {
-    //     AC: payload.VehicleEquipment.AC,
-    //     Automatic: payload.VehicleEquipment.Automatic,
-    //     Kitchen: payload.VehicleEquipment.Kitchen,
-    //     TV: payload.VehicleEquipment.TV,
-    //     Bathroom: payload.VehicleEquipment.Bathroom,
-    //   };
-    //   state.VehicleType = payload.VehicleType;
-    // },
   },
 });
 

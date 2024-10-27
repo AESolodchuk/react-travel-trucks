@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers, fetchCamper } from "./campersOps";
+import { fetchCampers, fetchCamper, filterCampers } from "./campersOps";
 
 const campersSlice = createSlice({
   name: "campers",
@@ -11,19 +11,33 @@ const campersSlice = createSlice({
       features: [],
       specifications: {},
     },
+    page: 1,
+    maxPages: 0,
+    loadMore: true,
     loading: false,
     error: null,
+  },
+  reducers: {
+    setPage(state, { payload }) {
+      state.page += 1;
+      state.loadMore = state.page < state.maxPages;
+    },
   },
 
   extraReducers: (builder) => {
     builder
 
-      .addCase(fetchCampers.fulfilled, (state, { payload: { items } }) => {
+      .addCase(fetchCampers.fulfilled, (state, { payload }) => {
+        state.items = [...state.items, ...payload.items];
+        state.maxPages = Math.ceil(payload.total / 4);
+        state.loadMore = state.page < state.maxPages;
+      })
+
+      .addCase(filterCampers.fulfilled, (state, { payload: { items } }) => {
         state.items = items;
       })
 
       .addCase(fetchCamper.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.item.id = payload;
         state.item.reviews = payload.reviews;
         state.item.features = Object.keys(payload).filter(
@@ -66,3 +80,4 @@ const campersSlice = createSlice({
 });
 
 export default campersSlice.reducer;
+export const { setPage } = campersSlice.actions;

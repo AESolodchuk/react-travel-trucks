@@ -30,6 +30,7 @@
 
 .textarea {
   min-height: 118px;
+  resize: none;
 }
 
 .form {

@@ -1,5 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+export const selectPage = (state) => state.campers.page;
+export const selectMaxPages = (state) => state.campers.maxPages;
+export const selectLoadMore = (state) => state.campers.loadMore;
+
 export const selectCampers = (state) => state.campers.items;
 export const selectCamper = (state) => state.campers.item.id;
 export const selectReviews = (state) => state.campers.item.reviews;
@@ -14,4 +18,4 @@ export const selectLocation = (state) => state.filters.location;
 export const selectVehicleEquipment = (state) => state.filters.vehicleEquipment;
 export const selectVehicleType = (state) => state.filters.vehicleType;
 
-export const selectFilter = "";
+export const selectFavorites = (state) => state.favorites.items;

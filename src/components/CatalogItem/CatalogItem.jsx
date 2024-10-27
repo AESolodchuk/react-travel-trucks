@@ -1,12 +1,24 @@
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/selectors";
+import { handleFavourites } from "../../redux/favoritesSlice";
 import Button from "../../components/Button/Button";
 import FeatureList from "../FeaturesList/FeaturesList";
 import sprite from "../../assets/sprite.svg";
 import css from "./CatalogItem.module.css";
+import clsx from "clsx";
 
 const CatalogItem = ({
   camper: { id, name, price, gallery, location, description, rating, reviews },
   features,
 }) => {
+  const dispatch = useDispatch();
+
+  const isActive = useSelector(selectFavorites).includes(id);
+
+  const handleFavouritesClick = () => {
+    dispatch(handleFavourites(id));
+  };
+
   return (
     <>
       <img src={gallery[0].thumb} alt="name" className={css.image} />
@@ -16,7 +28,10 @@ const CatalogItem = ({
             <p className={css.title}>{name}</p>
             <div className={css.amountwrapper}>
               <p className={css.price}>{`€${price}.00`}</p>
-              <svg className={css.favIcon}>
+              <svg
+                className={clsx(css.favIcon, isActive && css.active)}
+                onClick={handleFavouritesClick}
+              >
                 <use href={`${sprite}#icon-fav`} />
               </svg>
             </div>

@@ -1,15 +1,10 @@
 import { useEffect, Suspense } from "react";
-import {
-  Outlet,
-  useParams,
-  useLocation,
-  NavLink,
-  Link,
-} from "react-router-dom";
+import { Outlet, useParams, NavLink, Link } from "react-router-dom";
 import { fetchCamper } from "../../redux/campersOps";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCamper } from "../../redux/selectors";
 import BookForm from "../../components/BookForm/BookForm";
+import Loader from "../../components/Loader/Loader";
 import sprite from "../../assets/sprite.svg";
 import clsx from "clsx";
 import css from "./CamperPage.module.css";
@@ -95,7 +90,7 @@ const CamperPage = () => {
             </li>
           </ul>
           <div className={css.additionalInfoWrapper}>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<Loader />}>
               <Outlet />
               <BookForm />
             </Suspense>

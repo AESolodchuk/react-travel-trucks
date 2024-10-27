@@ -49,6 +49,17 @@
 .favIcon {
   width: 26px;
   height: 24px;
+  transition: var(--basic-transition);
+}
+
+.favIcon:hover,
+.favIcon:focus {
+  fill: var(--button);
+  cursor: pointer;
+}
+
+.active {
+  fill: var(--button);
 }
 
 .ratingIcon {

@@ -1,6 +1,7 @@
 //#region Common import
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import Loader from "./components/Loader/Loader";
 //#endregion Common import
 
 //#region Pages
@@ -20,7 +21,7 @@ const Features = lazy(() => import("./components/Features/Features"));
 function App() {
   return (
     <>
-      <Suspense fallback="Loading...">
+      <Suspense fallback={<Loader />}>
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />

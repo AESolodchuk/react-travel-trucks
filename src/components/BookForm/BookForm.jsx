@@ -1,8 +1,10 @@
 import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
-import css from "./BookForm.module.css";
 import clsx from "clsx";
+import css from "./BookForm.module.css";
 
 const Schema = Yup.object().shape({
   name: Yup.string()
@@ -37,12 +39,19 @@ const BookForm = () => {
   const bookingField = useId();
   const commentField = useId();
 
-  const handleSubmit = (values) => {
-    console.log("Form submitted with values:", values);
+  const notify = () =>
+    toast.success(
+      "Your camper has been successfully booked! Get ready for an amazing adventure ahead!"
+    );
+
+  const handleSubmit = (values, { resetForm }) => {
+    notify();
+    resetForm();
   };
 
   return (
     <div className={css.container}>
+      <ToastContainer />
       <div className={css.header}>
         <p className={css.title}>Book your campervan now</p>
         <p className={css.text}>

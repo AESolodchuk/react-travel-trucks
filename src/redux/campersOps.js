@@ -7,9 +7,9 @@ const camperInstance = axios.create({
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const { data } = await camperInstance.get("/campers");
+      const { data } = await camperInstance.get(`/campers?p=${page}&limit=4`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -29,11 +29,12 @@ export const fetchCamper = createAsyncThunk(
   }
 );
 
-export const filterCamper = createAsyncThunk(
-  "camper/filterCamper",
+export const filterCampers = createAsyncThunk(
+  "camper/filterCampers",
   async (filter, thunkAPI) => {
     try {
       const { data } = await camperInstance.get(`/campers?${filter}`);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

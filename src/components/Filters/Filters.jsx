@@ -11,6 +11,7 @@ import {
   setVehicleEquipment,
   setVehicleType,
 } from "../../redux/filterSlice";
+import { filterCampers } from "../../redux/campersOps";
 import css from "./Filters.module.css";
 
 const vehicleTypeArray = ["Van", "Fully Intergated", "Alcove"];
@@ -19,7 +20,6 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const location = useSelector(selectLocation);
-
   const vechicleEquipment = useSelector(selectVehicleEquipment);
   const vehicleType = useSelector(selectVehicleType);
 
@@ -33,6 +33,10 @@ const Filters = () => {
 
   const handleChangeVehicleType = (item) => {
     dispatch(setVehicleType(item));
+  };
+
+  const handleSearch = () => {
+    dispatch(filterCampers());
   };
 
   return (
@@ -86,7 +90,9 @@ const Filters = () => {
           </li>
         ))}
       </ul>
-      <button className={css.button}>Search</button>
+      <button className={css.button} onClick={handleSearch}>
+        Search
+      </button>
     </>
   );
 };
