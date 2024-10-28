@@ -10,33 +10,32 @@ export const fetchCampers = createAsyncThunk(
   async (currentPage, thunkAPI) => {
 
     const {location, vehicleEquipment, vehicleType} = (thunkAPI.getState().filters);
-    
-    const equipmentParams = Object.entries(vehicleEquipment)
-       .reduce((acc, [key, value]) => {
-         if (value) {
-           acc[key] = true;
-         }
-         return acc;
-       }, {});
-    
 
-    const filterParams = {...equipmentParams}
+    const buildEquipmentParams = (vehicleEquipment) => (
+      Object.entries(vehicleEquipment)
+        .reduce((acc, [key, value]) => {
+          if (value) acc[key] = true;
+          return acc;
+        }, {})
+    );
+    
+    const buildFilterParams = (location, vehicleType, vehicleEquipment) => {
+      const equipmentParams = buildEquipmentParams(vehicleEquipment);
+      const filterParams = { ...equipmentParams };
+    
+      if (location.trim()) filterParams.location = location;
+      if (vehicleType) filterParams.form = vehicleType.toLowerCase();
+    
+      return filterParams;
+    };
+
+    const filterParams = buildFilterParams(location, vehicleType, vehicleEquipment);
+    
  
     const defaultParams = {
       p: currentPage,
-      limit: 4,
-    }        
-    
-    if (location.trim()) {
-      filterParams.location = location  
-    }      
-
-
-    if (vehicleType) {
-      filterParams.form = vehicleType.toLowerCase()
-    }   
-
-    console.log(filterParams)
+      limit: 4
+    }          
 
     try {
       const { data } = await camperInstance.get('/campers', {params: {...defaultParams, ...filterParams}});     
@@ -71,8 +70,3 @@ export const filterCampers = createAsyncThunk(
     }
   }
 );
-
-
-// ?p=${currentPage}&limit=4
-
-''.toLowerCase

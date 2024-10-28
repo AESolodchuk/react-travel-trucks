@@ -24,6 +24,7 @@ const CatalogPage = () => {
   const currentPage = useSelector(selectCurrentPage);
   const previousPage = useSelector(selectPreviousPage);
 
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,8 +34,9 @@ const CatalogPage = () => {
   }, [dispatch,currentPage,previousPage]);
 
 
-  const handleLoadMore = () => {
-    if (loadMore) {
+  const handleLoadMore = () => {   
+    
+    if (loadMore) {      
       dispatch(setPage());
     }
   };
@@ -61,16 +63,15 @@ const CatalogPage = () => {
             ))}
           </ul>
         </div>
-      </section>
-      {loadMore && !isLoading && (
+      </section> 
+      {!isLoading && loadMore && (    
         <section className={css.loadMore}>
           <div className={clsx(css.container, css.loadMoreContainer)}>
             <button className={css.loadMoreBtn} onClick={handleLoadMore}>
               Load more
             </button>
           </div>
-        </section>
-      )}
+        </section>)}      
     </main>
   );
 };

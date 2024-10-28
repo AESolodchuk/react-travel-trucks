@@ -20,14 +20,19 @@ const campersSlice = createSlice({
   },
   reducers: {
 
-    setPage(state, { payload }) {
+    setPage(state, { payload }) {      
       state.previousPage = state.currentPage;
       state.currentPage += 1;
-      state.loadMore = state.page < state.maxPages;
+      state.loadMore = state.currentPage < state.maxPages;
     },
 
     reset(state) {
-      state.items = [];   
+      state.items = [];
+      state.maxPages = 0;
+      state.loadMore = true;
+      state.error = null;
+      state.currentPage = 1;
+      state.previousPage =0;   
     },
   },
 
@@ -37,7 +42,7 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
         state.items = [...state.items, ...payload.items];
         state.maxPages = Math.ceil(payload.total / 4);
-        state.loadMore = state.page < state.maxPages;       
+        state.loadMore = state.currentPage < state.maxPages;       
       })
 
       .addCase(filterCampers.fulfilled, (state, { payload: { items } }) => {

@@ -1,5 +1,3 @@
-export const selectPage = (state) => state.campers.page;
-export const selectMaxPages = (state) => state.campers.maxPages;
 export const selectLoadMore = (state) => state.campers.loadMore;
 export const selectCurrentPage = (state) => state.campers.currentPage;
 export const selectPreviousPage = (state) => state.campers.previousPage;
