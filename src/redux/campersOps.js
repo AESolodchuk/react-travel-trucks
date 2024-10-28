@@ -7,9 +7,39 @@ const camperInstance = axios.create({
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
-  async (page, thunkAPI) => {
+  async (currentPage, thunkAPI) => {
+
+    const {location, vehicleEquipment, vehicleType} = (thunkAPI.getState().filters);
+    
+    const equipmentParams = Object.entries(vehicleEquipment)
+       .reduce((acc, [key, value]) => {
+         if (value) {
+           acc[key] = true;
+         }
+         return acc;
+       }, {});
+    
+
+    const filterParams = {...equipmentParams}
+ 
+    const defaultParams = {
+      p: currentPage,
+      limit: 4,
+    }        
+    
+    if (location.trim()) {
+      filterParams.location = location  
+    }      
+
+
+    if (vehicleType) {
+      filterParams.form = vehicleType.toLowerCase()
+    }   
+
+    console.log(filterParams)
+
     try {
-      const { data } = await camperInstance.get(`/campers?p=${page}&limit=4`);
+      const { data } = await camperInstance.get('/campers', {params: {...defaultParams, ...filterParams}});     
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -41,3 +71,8 @@ export const filterCampers = createAsyncThunk(
     }
   }
 );
+
+
+// ?p=${currentPage}&limit=4
+
+''.toLowerCase

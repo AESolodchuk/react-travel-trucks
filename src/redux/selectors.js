@@ -1,8 +1,8 @@
-import { createSelector } from "@reduxjs/toolkit";
-
 export const selectPage = (state) => state.campers.page;
 export const selectMaxPages = (state) => state.campers.maxPages;
 export const selectLoadMore = (state) => state.campers.loadMore;
+export const selectCurrentPage = (state) => state.campers.currentPage;
+export const selectPreviousPage = (state) => state.campers.previousPage;
 
 export const selectCampers = (state) => state.campers.items;
 export const selectCamper = (state) => state.campers.item.id;

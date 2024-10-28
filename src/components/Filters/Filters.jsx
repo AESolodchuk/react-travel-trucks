@@ -1,5 +1,6 @@
 import sprite from "../../assets/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../../redux/campersSlice";
 import {
   selectLocation,
   selectVehicleEquipment,
@@ -11,10 +12,10 @@ import {
   setVehicleEquipment,
   setVehicleType,
 } from "../../redux/filterSlice";
-import { filterCampers } from "../../redux/campersOps";
+import { fetchCampers } from "../../redux/campersOps";
 import css from "./Filters.module.css";
 
-const vehicleTypeArray = ["Van", "Fully Intergated", "Alcove"];
+const vehicleTypeArray = ["Van", "Fully Integrated", "Alcove"];
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -35,8 +36,9 @@ const Filters = () => {
     dispatch(setVehicleType(item));
   };
 
-  const handleSearch = () => {
-    dispatch(filterCampers());
+  const handleFilter = () => {
+    dispatch(reset());
+    dispatch(fetchCampers(1));
   };
 
   return (
@@ -90,7 +92,7 @@ const Filters = () => {
           </li>
         ))}
       </ul>
-      <button className={css.button} onClick={handleSearch}>
+      <button className={css.button} onClick={handleFilter}>
         Search
       </button>
     </>

@@ -5,10 +5,10 @@ import { setPage } from "../../redux/campersSlice";
 import {
   selectCampers,
   selectError,
-  selectIsLoading,
-  selectPage,
-  selectMaxPages,
+  selectIsLoading, 
   selectLoadMore,
+  selectCurrentPage,
+  selectPreviousPage
 } from "../../redux/selectors";
 import Loader from "../../components/Loader/Loader";
 import CatalogItem from "../../components/CatalogItem/CatalogItem";
@@ -19,19 +19,22 @@ import css from "./CatalogPage.module.css";
 const CatalogPage = () => {
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-  const camperList = useSelector(selectCampers);
-  const page = useSelector(selectPage);
-  const maxPages = useSelector(selectMaxPages);
+  const camperList = useSelector(selectCampers); 
   const loadMore = useSelector(selectLoadMore);
+  const currentPage = useSelector(selectCurrentPage);
+  const previousPage = useSelector(selectPreviousPage);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCampers(page));
-  }, [dispatch, page]);
+    if (currentPage != previousPage) {
+      dispatch(fetchCampers(currentPage));
+    }
+  }, [dispatch,currentPage,previousPage]);
+
 
   const handleLoadMore = () => {
-    if (page < maxPages) {
+    if (loadMore) {
       dispatch(setPage());
     }
   };

@@ -55,7 +55,12 @@ const CatalogItem = ({
         </div>
         <p className={css.description}>{description}</p>
         <FeatureList features={features} />
-        <Button to={`${id}/features`} text="Show more" padd="catalogItem" />
+        <Button
+          to={`${id}/features`}
+          text="Show more"
+          padd="catalogItem"
+          target="_blank"
+        />
       </div>
     </>
   );
