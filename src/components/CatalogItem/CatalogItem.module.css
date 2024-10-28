@@ -75,6 +75,9 @@
 
 .description {
   text-align: left;
+  max-height: 24px;
+  overflow: hidden; 
+  text-overflow: ellipsis;  
 }
 
 .reviews {

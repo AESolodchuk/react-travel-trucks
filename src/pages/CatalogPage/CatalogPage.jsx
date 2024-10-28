@@ -16,7 +16,7 @@ import Filters from "../../components/Filters/Filters";
 import clsx from "clsx";
 import css from "./CatalogPage.module.css";
 
-const CatalogPage = () => {
+const CatalogPage = () => { 
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
   const camperList = useSelector(selectCampers); 

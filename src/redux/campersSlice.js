@@ -20,7 +20,7 @@ const campersSlice = createSlice({
   },
   reducers: {
 
-    setPage(state, { payload }) {      
+    setPage(state) {      
       state.previousPage = state.currentPage;
       state.currentPage += 1;
       state.loadMore = state.currentPage < state.maxPages;

@@ -1,8 +1,10 @@
 import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import DatePicker from 'react-datepicker';
 import * as Yup from "yup";
+import "react-toastify/dist/ReactToastify.css";
+import "react-datepicker/dist/react-datepicker.css";
 import clsx from "clsx";
 import css from "./BookForm.module.css";
 
@@ -21,7 +23,7 @@ const Schema = Yup.object().shape({
       "Invalid email address"
     ),
   bookingdate: Yup.date()
-    .min(new Date(), "Booking date cannot be earlier than tomorrow")
+    .min(new Date(), "Booking date cannot be earlier than today")
     .required("Booking date is required"),
   comment: Yup.string(),
 });
@@ -29,7 +31,7 @@ const Schema = Yup.object().shape({
 const initialValues = {
   name: "",
   email: "",
-  bookingdate: "",
+  bookingdate: null, // Keep this as null for the DatePicker
   comment: "",
 };
 
@@ -46,6 +48,7 @@ const BookForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     notify();
+    console.log("Form values:", values); // Log the form values for debugging
     resetForm();
   };
 
@@ -64,62 +67,66 @@ const BookForm = () => {
         initialValues={initialValues}
         validationSchema={Schema}
       >
-        <Form className={css.form}>
-          <div className={css.wrapper}>
-            <Field
-              placeholder="Name*"
-              type="text"
-              name="name"
-              id={nameFieldId}
-              className={css.input}
-            />
-            <ErrorMessage
-              name="name"
-              component="p"
-              className={css.customError}
-            />
-          </div>
-          <div className={css.wrapper}>
-            <Field
-              placeholder="Email*"
-              type="text"
-              name="email"
-              id={emailField}
-              className={css.input}
-            />
-            <ErrorMessage
-              name="email"
-              component="p"
-              className={css.customError}
-            />
-          </div>
-          <div className={css.wrapper}>
-            <Field
-              placeholder="Booking date"
-              type="date"
-              name="bookingdate"
-              id={bookingField}
-              className={css.input}
-            />
-            <ErrorMessage
-              name="bookingdate"
-              component="p"
-              className={css.customError}
-            />
-          </div>
-          <div className={css.wrapper}>
-            <Field
-              as="textarea"
-              placeholder="Comment"
-              name="comment"
-              id={commentField}
-              className={clsx(css.input, css.textarea)}
-            />
-          </div>
-          <button type="submit" className={css.button}>
-            Send
-          </button>
-        </Form>
+        {({ setFieldValue, values }) => ( // Access values from Formik state
+          <Form className={css.form}>
+            <div className={css.wrapper}>
+              <Field
+                placeholder="Name*"
+                type="text"
+                name="name"
+                id={nameFieldId}
+                className={css.input}
+              />
+              <ErrorMessage
+                name="name"
+                component="p"
+                className={css.customError}
+              />
+            </div>
+            <div className={css.wrapper}>
+              <Field
+                placeholder="Email*"
+                type="text"
+                name="email"
+                id={emailField}
+                className={css.input}
+              />
+              <ErrorMessage
+                name="email"
+                component="p"
+                className={css.customError}
+              />
+            </div>
+            <div className={css.wrapper}>
+            
+              <DatePicker
+                id={bookingField}
+                selected={values.bookingdate} 
+                onChange={(date) => setFieldValue("bookingdate", date)}
+                className={css.input} 
+                minDate={new Date()} 
+                placeholderText="Booking date*"
+              />
+              <ErrorMessage
+                name="bookingdate"
+                component="p"
+                className={css.customError}
+              />
+            </div>
+            <div className={css.wrapper}>
+              <Field
+                as="textarea"
+                placeholder="Comment"
+                name="comment"
+                id={commentField}
+                className={clsx(css.input, css.textarea)}
+              />
+            </div>
+            <button type="submit" className={css.button}>
+              Send
+            </button>
+          </Form>
+        )}
       </Formik>
     </div>
   );

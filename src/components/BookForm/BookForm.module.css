@@ -60,6 +60,7 @@
   outline: none;
 }
 
+
 .customError {
   color: var(--error);
   font-size: 12px;

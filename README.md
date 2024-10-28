@@ -63,7 +63,7 @@ This will create a dist directory containing the optimized files for deployment.
 Here's a basic overview of the project structure:
 
 /travel-trucks
-├── **public**          # Static files
+├── public**          # Static files
 ├── **src**             # Source files
 │   ├── **assets**      # Images and other assets
 │   ├── **components**  # Reusable components
@@ -85,3 +85,5 @@ Contributions are welcome! If you'd like to contribute to the Travel Trucks proj
 4. Push to the branch:
    git push origin feature/your-feature-name
 5. Open a pull request.
+
+
