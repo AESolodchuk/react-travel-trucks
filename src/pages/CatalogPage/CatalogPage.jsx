@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campersOps";
 import { useDispatch, useSelector } from "react-redux";
-import { setPage } from "../../redux/campersSlice";
+import { setPage, reset } from "../../redux/campersSlice";
 import {
   selectCampers,
   selectError,
@@ -28,6 +28,7 @@ const CatalogPage = () => {
 
   useEffect(() => {
     if (currentPage != previousPage) {
+      dispatch(reset());
       dispatch(fetchCampers(currentPage));
     }
   }, [dispatch,currentPage,previousPage]);
