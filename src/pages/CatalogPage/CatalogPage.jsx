@@ -28,7 +28,7 @@ const CatalogPage = () => {
 
   useEffect(() => {          
     if (currentPage !== previousPage) {
-      dispatch(fetchCampers());
+      dispatch(fetchCampers(currentPage));
     }
     return () => {
       dispatch(reset());
