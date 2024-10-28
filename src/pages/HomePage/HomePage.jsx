@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { reset } from "../../redux/campersSlice";
+import { useDispatch } from "react-redux";
 import Button from "../../components/Button/Button";
 import css from "./HomePage.module.css";
 
 const HomePage = () => {
+
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(reset());
+  }, [dispatch]);
+
   return (
     <main>
       <section className={css.hero}>

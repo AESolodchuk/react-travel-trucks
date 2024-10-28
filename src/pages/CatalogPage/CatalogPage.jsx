@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campersOps";
 import { useDispatch, useSelector } from "react-redux";
-import { setPage, reset } from "../../redux/campersSlice";
+import { useLocation } from "react-router-dom";
+import { setPage } from "../../redux/campersSlice";
 import {
   selectCampers,
   selectError,
@@ -23,17 +24,15 @@ const CatalogPage = () => {
   const loadMore = useSelector(selectLoadMore);
   const currentPage = useSelector(selectCurrentPage);
   const previousPage = useSelector(selectPreviousPage);
+  const location = useLocation();
  
   const dispatch = useDispatch();
 
   useEffect(() => {          
     if (currentPage !== previousPage) {
       dispatch(fetchCampers(currentPage));
-    }
-    return () => {
-      dispatch(reset());
-    };
-    }, [dispatch,currentPage, previousPage]);
+    }    
+    }, [dispatch,currentPage, previousPage,location]);
 
 
   const handleLoadMore = () => {     
