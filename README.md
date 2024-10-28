@@ -61,6 +61,7 @@ This will create a dist directory containing the optimized files for deployment.
 ## Project Structure
 
 Here's a basic overview of the project structure:
+
 /travel-trucks
 ├── **public**          # Static files
 ├── **src**             # Source files
