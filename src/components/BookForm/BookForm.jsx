@@ -23,7 +23,7 @@ const Schema = Yup.object().shape({
       "Invalid email address"
     ),
   bookingdate: Yup.date()
-    .min(new Date(), "Booking date cannot be earlier than today")
+    .min(new Date(), "Booking date cannot be earlier than tomorrow")
     .required("Booking date is required"),
   comment: Yup.string(),
 });
