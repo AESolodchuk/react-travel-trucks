@@ -32,7 +32,7 @@ const campersSlice = createSlice({
       state.loadMore = true;
       state.error = null;
       state.currentPage = 1;
-      state.previousPage =0;   
+      state.previousPage = 0;   
     },
   },
 

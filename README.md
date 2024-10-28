@@ -62,16 +62,17 @@ This will create a dist directory containing the optimized files for deployment.
 
 Here's a basic overview of the project structure:
 
-/travel-trucks
-├── public**          # Static files
-├── **src**             # Source files
-│   ├── **assets**      # Images and other assets
-│   ├── **components**  # Reusable components
-│   ├── **pages**       # Page components
-│   ├── **redux**       # Redux setup (slices, store, etc.)
-│   └── **App.jsx**     # Main application component
-├── **package.json**   # Project metadata and dependencies
-└── **vite.config.js**  # Vite configuration file
+/travel-trucks <br>
+├── public               # Static files <br>
+├── src                  # Source files <br>
+│   ├── assets           # Images and other assets <br>
+│   ├── components       # Reusable components <br>
+│   ├── pages            # Page components <br>
+│   ├── redux            # Redux setup (slices, store, etc.) <br>
+│   └── App.jsx          # Main application component <br>
+├── package.json         # Project metadata and dependencies <br>
+└── vite.config.js       # Vite configuration file  
+
 
 ## Contributing
 
@@ -85,5 +86,6 @@ Contributions are welcome! If you'd like to contribute to the Travel Trucks proj
 4. Push to the branch:
    git push origin feature/your-feature-name
 5. Open a pull request.
+
 
 
