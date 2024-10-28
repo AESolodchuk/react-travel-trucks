@@ -7,7 +7,7 @@ const Loader = ({ loader }) => {
       <TailSpin
         height="80"
         width="80"
-        color="#4fa94d"
+        color="#e44848"
         ariaLabel="tail-spin-loading"
         radius="1"
         wrapperStyle={{}}
@@ -15,6 +15,7 @@ const Loader = ({ loader }) => {
         visible={loader}
         clas
         sName={css.Loader}
+        strokeWidth="5"      
       />
     </div>
   );

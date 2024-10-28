@@ -13,6 +13,7 @@ import {
   setVehicleType,
 } from "../../redux/filterSlice";
 import { fetchCampers } from "../../redux/campersOps";
+import clxs from "clsx";
 import css from "./Filters.module.css";
 
 const vehicleTypeArray = ["Van", "fully Integrated", "Alcove"];
@@ -33,7 +34,10 @@ const Filters = () => {
   };
 
   const handleChangeVehicleType = (item) => {
-    dispatch(setVehicleType(item));
+    if (vehicleType === item) {
+      dispatch(setVehicleType(''));}
+      else{
+    dispatch(setVehicleType(item))};
   };
 
   const handleFilter = () => {
@@ -47,7 +51,7 @@ const Filters = () => {
         Location
       </label>
       <div className={css.locationWrapper}>
-        <svg className={css.locationIcon}>
+        <svg className={clxs(css.locationIcon, location && css.filledInput)}>
           <use href={`${sprite}#icon-location`} />
         </svg>
       <input

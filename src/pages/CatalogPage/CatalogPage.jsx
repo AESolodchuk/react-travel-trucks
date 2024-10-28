@@ -48,7 +48,7 @@ const CatalogPage = () => {
             <Filters />
           </div>
           {camperList.length === 0 && isLoading && <Loader />}
-          {error && <p>{error}</p>}
+          {error && <p className={css.error}>Seems we couldn't find any matches. Please try to change your search parameters</p>}
           <ul className={css.camperList}>
             {camperList.map((camper) => (
               <li key={camper.id} className={css.camperItem}>
@@ -70,7 +70,8 @@ const CatalogPage = () => {
               Load more
             </button>
           </div>
-        </section>)}      
+        </section>)}
+        {isLoading && <Loader />}      
     </main>
   );
 };
