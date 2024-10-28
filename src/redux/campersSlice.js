@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers, fetchCamper, filterCampers } from "./campersOps";
+import { fetchCampers, fetchCamper } from "./campersOps";
 
 const campersSlice = createSlice({
   name: "campers",
@@ -43,10 +43,6 @@ const campersSlice = createSlice({
         state.items = [...state.items, ...payload.items];
         state.maxPages = Math.ceil(payload.total / 4);
         state.loadMore = state.currentPage < state.maxPages;       
-      })
-
-      .addCase(filterCampers.fulfilled, (state, { payload: { items } }) => {
-        state.items = items;
       })
 
       .addCase(fetchCamper.fulfilled, (state, { payload }) => {

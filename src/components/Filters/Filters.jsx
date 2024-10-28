@@ -15,7 +15,7 @@ import {
 import { fetchCampers } from "../../redux/campersOps";
 import css from "./Filters.module.css";
 
-const vehicleTypeArray = ["Van", "Fully Integrated", "Alcove"];
+const vehicleTypeArray = ["Van", "fully Integrated", "Alcove"];
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -46,6 +46,10 @@ const Filters = () => {
       <label className={css.locationLabel} htmlFor="location">
         Location
       </label>
+      <div className={css.locationWrapper}>
+        <svg className={css.locationIcon}>
+          <use href={`${sprite}#icon-location`} />
+        </svg>
       <input
         value={location}
         className={css.locationInput}
@@ -53,6 +57,7 @@ const Filters = () => {
         placeholder="City"
         id="location"
       />
+      </div>
 
       <p className={css.filtersLabel}>Filters</p>
       <p className={css.title}>Vehicle equipment</p>
@@ -69,7 +74,7 @@ const Filters = () => {
             <svg className={css.icon}>
               <use href={`${sprite}#icon-${item.toLowerCase()}`} />
             </svg>
-            <p className={css.text}>{item}</p>
+            <p className={css.text}>{item.charAt(0).toUpperCase() + item.slice(1)}</p>
           </li>
         ))}
       </ul>
@@ -88,7 +93,7 @@ const Filters = () => {
                 href={`${sprite}#icon-${item.toLowerCase().replace(" ", "")}`}
               />
             </svg>
-            <p className={css.text}>{item}</p>
+            <p className={css.text}>{item.charAt(0).toUpperCase() + item.slice(1)}</p>
           </li>
         ))}
       </ul>

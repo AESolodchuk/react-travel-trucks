@@ -27,19 +27,8 @@ const filtersSlice = createSlice({
     },
     setVehicleType(state, { payload }) {
       state.vehicleType = payload;
-    },
-    reset(state) {
-      state.Location = "";
-      state.VehicleEquipment = {
-        AC: false,
-        Automatic: false,
-        Kitchen: false,
-        TV: false,
-        Bathroom: false,
-      };
-      state.VehicleType = null;
-    },
-  },
+    }    
+  }
 });
 
 export default filtersSlice.reducer;

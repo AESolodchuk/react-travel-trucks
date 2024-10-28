@@ -23,7 +23,6 @@ const CatalogPage = () => {
   const loadMore = useSelector(selectLoadMore);
   const currentPage = useSelector(selectCurrentPage);
   const previousPage = useSelector(selectPreviousPage);
-
  
   const dispatch = useDispatch();
 

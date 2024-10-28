@@ -24,7 +24,7 @@ export const fetchCampers = createAsyncThunk(
       const filterParams = { ...equipmentParams };
     
       if (location.trim()) filterParams.location = location;
-      if (vehicleType) filterParams.form = vehicleType.toLowerCase();
+      if (vehicleType) filterParams.form = vehicleType.toLowerCase().replace(" ", "");
     
       return filterParams;
     };
@@ -58,15 +58,3 @@ export const fetchCamper = createAsyncThunk(
   }
 );
 
-export const filterCampers = createAsyncThunk(
-  "camper/filterCampers",
-  async (filter, thunkAPI) => {
-    try {
-      const { data } = await camperInstance.get(`/campers?${filter}`);
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);

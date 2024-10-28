@@ -5,23 +5,30 @@
   padding-bottom: 8px;
 }
 
-.locationInput {
+.locationWrapper {
+  position: relative;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+}
 
+.locationIcon {
+  position: absolute;
+  left: 20px; 
+  width: 20px; 
+  height: 20px;   
+}
+
+
+.locationInput {
   border-radius: 12px;
   border: none;
-  padding: 18px 218px 18px 20px;
-  width: 360px;
-  height: 56px;
-
+  padding: 16px 48px;
+  width: 360px; 
   background-color: var(--inputs);
 }
 
-.locationInput:focus {
+.locationInput:focus,
+.locationInput:hover {
   outline: none;
 }
 
