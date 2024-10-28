@@ -10,7 +10,6 @@ Welcome to the **Travel Trucks** project! This is a web application designed to 
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -63,15 +62,15 @@ This will create a dist directory containing the optimized files for deployment.
 
 Here's a basic overview of the project structure:
 /travel-trucks
-├── /public # Static files
-├── /src # Source files
-│ ├── /assets # Images and other assets
-│ ├── /components # Reusable components
-│ ├── /pages # Page components
-│ ├── /redux # Redux setup (slices, store, etc.)
-│ └── App.jsx # Main application component
-├── package.json # Project metadata and dependencies
-└── vite.config.js # Vite configuration file
+├── **public**          # Static files
+├── **src**             # Source files
+│   ├── **assets**      # Images and other assets
+│   ├── **components**  # Reusable components
+│   ├── **pages**       # Page components
+│   ├── **redux**       # Redux setup (slices, store, etc.)
+│   └── **App.jsx**     # Main application component
+├── **package.json**   # Project metadata and dependencies
+└── **vite.config.js**  # Vite configuration file
 
 ## Contributing
 

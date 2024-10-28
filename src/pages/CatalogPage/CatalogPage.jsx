@@ -64,7 +64,7 @@ const CatalogPage = () => {
           </ul>
         </div>
       </section> 
-      {!isLoading && loadMore && (    
+      {!isLoading && loadMore && !error && (    
         <section className={css.loadMore}>
           <div className={clsx(css.container, css.loadMoreContainer)}>
             <button className={css.loadMoreBtn} onClick={handleLoadMore}>
