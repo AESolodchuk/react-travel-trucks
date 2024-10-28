@@ -26,19 +26,18 @@ const CatalogPage = () => {
  
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (currentPage != previousPage) {
+  useEffect(() => {          
+    if (currentPage !== previousPage) {
+      dispatch(fetchCampers());
+    }
+    return () => {
       dispatch(reset());
-      dispatch(fetchCampers(currentPage));
-    }
-  }, [dispatch,currentPage,previousPage]);
+    };
+    }, [dispatch,currentPage, previousPage]);
 
 
-  const handleLoadMore = () => {   
-    
-    if (loadMore) {      
-      dispatch(setPage());
-    }
+  const handleLoadMore = () => {     
+      dispatch(setPage());    
   };
 
   return (

@@ -7,9 +7,14 @@ const camperInstance = axios.create({
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
-  async (currentPage, thunkAPI) => {
+  async (_,thunkAPI) => {
+    
 
     const {location, vehicleEquipment, vehicleType} = (thunkAPI.getState().filters);
+    const currentPage = thunkAPI.getState().campers.currentPage;
+    const previousPage = thunkAPI.getState().campers.previousPage;
+
+    console.log(currentPage, previousPage)
 
     const buildEquipmentParams = (vehicleEquipment) => (
       Object.entries(vehicleEquipment)
